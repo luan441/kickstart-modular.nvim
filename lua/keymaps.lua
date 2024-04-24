@@ -48,4 +48,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save file' })
+vim.keymap.set('n', '<C-q>', ':q<CR>', { desc = 'Quit' })
+vim.keymap.set('n', '<leader>f', ':Neotree toggle<CR>', { desc = 'Open filesystem' })
 -- vim: ts=2 sts=2 sw=2 et

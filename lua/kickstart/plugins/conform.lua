@@ -4,7 +4,7 @@ return {
     lazy = false,
     keys = {
       {
-        '<leader>f',
+        '<leader>F',
         function()
           require('conform').format { async = true, lsp_fallback = true }
         end,
@@ -15,6 +15,10 @@ return {
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
+        -- Disable with a global or buffer-local variable
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+          return
+        end
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
@@ -26,6 +30,11 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        ['yaml.docker-compose'] = { { 'prettierd', 'prettier' } },
+        ['docker-compose.yml'] = { { 'prettierd', 'prettier' } },
+        ['docker-compose.yaml'] = { { 'prettierd', 'prettier' } },
+        php = { 'php_cs_fixer' },
+        go = { 'goimports', 'gofumpt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

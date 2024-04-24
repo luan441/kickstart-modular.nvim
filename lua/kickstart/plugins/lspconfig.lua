@@ -157,7 +157,6 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -167,7 +166,22 @@ return {
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
-        --
+
+        -- Docker
+        dockerls = {},
+        docker_compose_language_service = {},
+        hadolint = {},
+
+        -- Golang
+        gopls = {},
+        goimports = {},
+        gofumpt = {},
+        delve = {},
+
+        -- PHP
+        phpactor = {},
+        ['php-cs-fixer'] = {},
+        ['php-debug-adapter'] = {},
 
         lua_ls = {
           -- cmd = {...},
